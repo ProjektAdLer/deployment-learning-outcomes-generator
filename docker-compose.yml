@@ -1,0 +1,19 @@
+services:
+  web:
+    image: ghcr.io/projektadler/learningoutcomesgenerator:1.1.0
+    restart: always
+    networks:
+      - traefik_gateway
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.learningoutcomes.rule=Host(`lernziele.projekt-adler.eu`)"
+      - "traefik.http.routers.learningoutcomes.tls=true"
+      - "traefik.http.routers.learningoutcomes.tls.certresolver=le"
+      - "traefik.http.routers.learningoutcomes.entrypoints=websecure"
+      - "traefik.http.services.learningoutcomes.loadbalancer.server.port=8080"
+
+
+networks:
+  traefik_gateway:
+    name: traefik_gateway
+    external: true
