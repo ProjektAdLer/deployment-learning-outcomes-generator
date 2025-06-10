@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/projektadler/learningoutcomesgenerator:1.1.4
+    image: ghcr.io/projektadler/learningoutcomesgenerator:1.1.5
     restart: always
     networks:
       - traefik_gateway
